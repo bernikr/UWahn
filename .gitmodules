@@ -1,5 +1,5 @@
-[submodule "data"]
-	path = data
+[submodule "assets"]
+	path = assets
 	url = https://github.com/bernikr/UWahn-assets
 [submodule "lib/processing-js"]
 	path = lib/processing-js

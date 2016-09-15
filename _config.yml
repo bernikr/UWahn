@@ -1,0 +1,5 @@
+exclude:
+    - lib/processing-js/
+
+gems:
+    - jekyll-coffeescript

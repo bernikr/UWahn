@@ -5,6 +5,13 @@
   game:
     active: true
     scroll: 0
+    track:
+      scroll: 0
+      speed: 23
+      current: []
+      buffer: []
+
+game = data.game
 
 {% include_relative functions.coffee %}
 {% include_relative game.coffee %}
@@ -18,7 +25,7 @@ ready = (P) =>
     resize()
     $('canvas').css('image-rendering', '') # remove the Anti-Aliasing inline-css
     data.loadAssets()
-    setInterval P.redraw, 50 # I don't know, why this is needed...
+    setInterval P.redraw, 60 # I don't know, why this is needed...
 
   P.draw = ->
     P.translate(P.width/2 , P.height/2)

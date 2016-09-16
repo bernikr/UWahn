@@ -14,6 +14,7 @@
 game = data.game
 
 {% include_relative functions.coffee %}
+{% include_relative assets.coffee %}
 {% include_relative game.coffee %}
 
 
@@ -25,12 +26,13 @@ ready = (P) =>
     resize()
     $('canvas').css('image-rendering', '') # remove the Anti-Aliasing inline-css
     data.loadAssets()
+    game.setup()
     setInterval P.redraw, 60 # I don't know, why this is needed...
 
   P.draw = ->
     P.translate(P.width/2 , P.height/2)
     P.background(0)
-    data.game.draw() if data.game.active
+    game.draw() if data.game.active
 
 resize = ->
   height = 400

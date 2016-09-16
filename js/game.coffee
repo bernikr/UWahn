@@ -1,37 +1,27 @@
-data.loadAssets = ->
-  data.assets =
-    background:
-      tracks: P.loadImage('assets/tracks.png')
-      transition1: P.loadImage('assets/transition1.png')
-      transition2: P.loadImage('assets/transition2.png')
-      station: P.loadImage('assets/station.png')
-
-  t  = data.assets.background.tracks
-  t1 = data.assets.background.transition1
-  t2 = data.assets.background.transition2
-  s  = data.assets.background.station
-
-  game.track.current = [t,t,t]
-  game.track.buffer = [t2,s,t1,t]
+game.setup = ->
+  bg = data.assets.background
+  game.track.current = [bg.t,bg.t,bg.t]
+  game.track.buffer = [bg.t]
 
 game.draw = ->
   game.renderBackground()
 
 
 game.renderBackground = ->
+  # render
+  track = game.track
+  game.renderImg(track.current[0],
+    track.scroll - track.current[1].width, 0)
+  game.renderImg(track.current[1],
+    track.scroll, 0)
+  game.renderImg(track.current[2],
+    track.scroll + track.current[1].width, 0)
 
-  currentBgs = game.track.current
-  game.renderImg(currentBgs[0],
-    game.track.scroll - currentBgs[1].width, 0)
-  game.renderImg(currentBgs[1],
-    game.track.scroll, 0)
-  game.renderImg(currentBgs[2],
-    game.track.scroll + currentBgs[1].width, 0)
-
-  game.track.scroll -= game.track.speed
-  if game.track.scroll < -currentBgs[1].width
-    game.track.scroll += currentBgs[1].width
-    currentBgs.push(game.track.buffer[0])
-    currentBgs.shift()
-    if game.track.buffer.length > 1
-      game.track.buffer.shift()
+  # scroll logic
+  track.scroll -= track.speed
+  if track.scroll < -track.current[1].width
+    track.scroll += track.current[1].width
+    track.current.push(track.buffer[0])
+    track.current.shift()
+    if track.buffer.length > 1
+      track.buffer.shift()

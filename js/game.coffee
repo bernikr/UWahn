@@ -1,5 +1,5 @@
 game.setup = ->
-  bg = data.assets.background
+  bg = data.assets.backgrounds
   game.track.current = [bg.t,bg.t,bg.t]
   game.track.buffer = [bg.t]
 

@@ -2,6 +2,7 @@
 ---
 @P = null # global object to interact with Processing
 @data =
+  assets: {}
   game:
     active: true
     scroll: 0

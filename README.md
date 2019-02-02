@@ -13,12 +13,6 @@ How to Play
 
 To start the game download the archive for your platform and start the executable.
 
-Contact
--------
-
-You can contact us under: contact.UWahn@gmail.com
-
-
 Licenses
 --------
 
